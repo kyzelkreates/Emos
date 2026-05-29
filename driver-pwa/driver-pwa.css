@@ -1,0 +1,103 @@
+/* AP3X Driver PWA — Mobile-First Additional Styles */
+
+/* Force full viewport for PWA */
+body { overflow: hidden; }
+#ap3x-driver-root { height: 100vh; overflow: hidden; }
+
+/* ── DRIVER SELECTION ────────────────────────── */
+.ap3x-driver-select {
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  height: 100%; padding: var(--sp-lg);
+  gap: var(--sp-lg); text-align: center;
+}
+.ap3x-driver-select__title { font-size: 1.2rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; }
+.ap3x-driver-select__sub   { font-size: 0.8rem; color: var(--ap3x-text-muted); }
+
+.ap3x-driver-list {
+  width: 100%; max-width: 400px;
+  display: flex; flex-direction: column; gap: var(--sp-sm);
+  overflow-y: auto; max-height: 60vh;
+}
+.ap3x-driver-option {
+  display: flex; align-items: center; gap: var(--sp-sm);
+  padding: var(--sp-md);
+  background: var(--ap3x-card);
+  border: 1px solid var(--ap3x-border);
+  border-radius: var(--r-lg);
+  cursor: pointer;
+  transition: all var(--transition);
+  text-align: left;
+  font-family: var(--font);
+  color: var(--ap3x-text);
+}
+.ap3x-driver-option:hover { border-color: var(--ap3x-blue); background: rgba(59,130,246,0.06); }
+.ap3x-driver-option__name { font-size: 0.85rem; font-weight: 600; }
+.ap3x-driver-option__status { font-size: 0.7rem; color: var(--ap3x-text-muted); }
+
+/* ── ACTIVE TASK ─────────────────────────────── */
+.ap3x-pwa-task-header {
+  background: var(--ap3x-surface);
+  border-bottom: 1px solid var(--ap3x-border);
+  padding: var(--sp-md);
+  flex-shrink: 0;
+}
+.ap3x-pwa-task-header__id { font-family: var(--font-mono); font-size: 0.65rem; color: var(--ap3x-text-muted); margin-bottom: 2px; }
+.ap3x-pwa-task-header__type { font-size: 1rem; font-weight: 700; color: var(--ap3x-text-bright); }
+.ap3x-pwa-task-header__loc { font-size: 0.78rem; color: var(--ap3x-text-sub); margin-top: 3px; }
+
+/* ── WORKFLOW STEPS ──────────────────────────── */
+.ap3x-steps-list { display: flex; flex-direction: column; gap: var(--sp-sm); }
+
+/* ── MAP PLACEHOLDER ─────────────────────────── */
+.ap3x-map-placeholder {
+  background: var(--ap3x-card);
+  border: 1px solid var(--ap3x-border);
+  border-radius: var(--r-lg);
+  height: 120px;
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: 4px;
+  font-size: 0.75rem; color: var(--ap3x-text-muted);
+  position: relative; overflow: hidden;
+}
+.ap3x-map-placeholder::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(59,130,246,0.03) 0px,
+    rgba(59,130,246,0.03) 2px,
+    transparent 2px,
+    transparent 14px
+  );
+}
+.ap3x-map-placeholder__label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ap3x-teal); }
+
+/* ── STATUS BLOCK ────────────────────────────── */
+.ap3x-status-block {
+  background: var(--ap3x-card);
+  border: 1px solid var(--ap3x-border);
+  border-radius: var(--r-lg);
+  padding: var(--sp-md);
+  display: flex; flex-direction: column; gap: var(--sp-sm);
+}
+.ap3x-status-block__label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ap3x-text-muted); }
+.ap3x-status-block__value { font-size: 1.2rem; font-weight: 700; color: var(--ap3x-text-bright); }
+
+/* ── HISTORY TAB ─────────────────────────────── */
+.ap3x-pwa-history {
+  display: flex; flex-direction: column; gap: var(--sp-sm);
+}
+
+/* ── NO TASK STATE ───────────────────────────── */
+.ap3x-no-task {
+  display: flex; flex-direction: column; align-items: center;
+  padding: var(--sp-xl) var(--sp-lg); text-align: center; gap: var(--sp-md);
+}
+.ap3x-no-task__icon { font-size: 3rem; opacity: 0.3; }
+.ap3x-no-task__title { font-size: 1rem; font-weight: 700; color: var(--ap3x-text-sub); }
+.ap3x-no-task__sub   { font-size: 0.78rem; color: var(--ap3x-text-muted); }
+
+/* ── ANIMATION: status step transitions ─────── */
+.ap3x-step-complete { opacity: 0.5; text-decoration: none; }
+.ap3x-step-complete .ap3x-workflow-step__label { color: var(--ap3x-green); }
