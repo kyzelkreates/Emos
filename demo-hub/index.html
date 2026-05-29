@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="AP3X Emergency Response Simulation System — Live Demo Hub" />
+  <meta name="theme-color" content="#080c12" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../shared/ap3x.css" />
+  <link rel="stylesheet" href="demo-hub.css" />
+
+  <!-- SIMULATION ONLY — Not a real operational system -->
+  <title>AP3X — Live Simulation Demo Hub</title>
+</head>
+<body>
+  <div id="ap3x-demo-root"></div>
+  <script type="module">
+    import { mountDemoHub } from "./demo-hub.js";
+    mountDemoHub(document.getElementById("ap3x-demo-root"));
+  </script>
+</body>
+</html>
