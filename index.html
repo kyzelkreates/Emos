@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="AP3X Intelligent Emergency Response Simulation System" />
+  <meta name="theme-color" content="#080c12" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="shared/ap3x.css" />
+
+  <style>
+    body { overflow: auto; }
+    .landing-shell {
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 40px 24px;
+      background: radial-gradient(ellipse at 50% 0%, rgba(59,130,246,0.08) 0%, transparent 70%), var(--ap3x-bg);
+      position: relative;
+    }
+    .landing-shell::before {
+      content: "";
+      position: fixed; inset: 0;
+      background-image:
+        linear-gradient(rgba(59,130,246,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(59,130,246,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+    .landing-badge {
+      font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--ap3x-blue); font-weight: 600;
+      background: rgba(59,130,246,0.1); border: 1px solid rgba(59,130,246,0.25);
+      padding: 4px 16px; border-radius: 999px; margin-bottom: 28px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .landing-badge__dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--ap3x-blue); box-shadow: 0 0 8px var(--ap3x-blue);
+      animation: ap3x-blink 1.5s infinite;
+    }
+    .landing-title {
+      font-size: clamp(1.8rem, 6vw, 3.2rem);
+      font-weight: 800;
+      text-align: center;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--ap3x-text-bright);
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .landing-title span {
+      background: linear-gradient(135deg, var(--ap3x-blue) 0%, var(--ap3x-purple) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .landing-sub {
+      font-size: 0.9rem; color: var(--ap3x-text-sub);
+      text-align: center; max-width: 560px;
+      line-height: 1.7; margin-bottom: 48px;
+    }
+    .landing-cards {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 20px; width: 100%; max-width: 900px; margin-bottom: 40px;
+    }
+    .landing-card {
+      background: var(--ap3x-card);
+      border: 1px solid var(--ap3x-border);
+      border-radius: 14px;
+      padding: 28px 24px;
+      text-decoration: none; color: inherit;
+      display: flex; flex-direction: column; gap: 12px;
+      transition: all 0.2s ease; cursor: pointer;
+      position: relative; overflow: hidden;
+    }
+    .landing-card::before {
+      content: ""; position: absolute;
+      top: 0; left: 0; right: 0; height: 2px;
+    }
+    .landing-card.blue::before   { background: var(--ap3x-blue); }
+    .landing-card.purple::before { background: var(--ap3x-purple); }
+    .landing-card.teal::before   { background: var(--ap3x-teal); }
+    .landing-card:hover { transform: translateY(-4px); border-color: var(--ap3x-border-glow); box-shadow: 0 12px 40px rgba(0,0,0,0.4); }
+    .landing-card__icon  { font-size: 2rem; }
+    .landing-card__tag   { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 600; }
+    .landing-card.blue   .landing-card__tag { color: var(--ap3x-blue); }
+    .landing-card.purple .landing-card__tag { color: var(--ap3x-purple); }
+    .landing-card.teal   .landing-card__tag { color: var(--ap3x-teal); }
+    .landing-card__title { font-size: 1.05rem; font-weight: 700; color: var(--ap3x-text-bright); }
+    .landing-card__desc  { font-size: 0.75rem; color: var(--ap3x-text-muted); line-height: 1.6; flex: 1; }
+    .landing-card__arrow { font-size: 0.75rem; color: var(--ap3x-text-muted); margin-top: 4px; }
+    .landing-footer {
+      font-size: 0.68rem; color: var(--ap3x-text-muted); text-align: center;
+      max-width: 600px; line-height: 1.6;
+      padding: 16px 24px; border: 1px solid rgba(245,158,11,0.15);
+      background: rgba(245,158,11,0.04); border-radius: 8px;
+    }
+    @media (max-width: 700px) {
+      .landing-cards { grid-template-columns: 1fr; }
+    }
+  </style>
+  <title>AP3X — Intelligent Emergency Response Simulation</title>
+</head>
+<body>
+  <div class="landing-shell">
+    <div class="landing-badge">
+      <div class="landing-badge__dot"></div>
+      AP3X Intelligent Emergency Response Simulation System
+    </div>
+
+    <h1 class="landing-title">
+      Emergency Response<br>
+      <span>Simulation Platform</span>
+    </h1>
+
+    <p class="landing-sub">
+      A real-time adaptive simulation platform with AI-driven incident generation,
+      cross-device coordination, and live operational dashboard behaviour.
+      Select a system to begin.
+    </p>
+
+    <div class="landing-cards">
+      <a href="demo-hub/index.html" class="landing-card blue">
+        <div class="landing-card__icon">🎛️</div>
+        <div class="landing-card__tag">Start Here</div>
+        <div class="landing-card__title">Demo Hub</div>
+        <div class="landing-card__desc">Live simulation controller. Start, pause, and reset the simulation. Watch the entire system come alive with real-time incident generation and AI responses.</div>
+        <div class="landing-card__arrow">Launch →</div>
+      </a>
+
+      <a href="control-os/index.html" class="landing-card purple">
+        <div class="landing-card__icon">🖥️</div>
+        <div class="landing-card__tag">Command Centre</div>
+        <div class="landing-card__title">Control OS</div>
+        <div class="landing-card__desc">Full command dashboard with live incident feed, driver status grid, AI recommendation sidebar, and timeline replay. The operator's view.</div>
+        <div class="landing-card__arrow">Launch →</div>
+      </a>
+
+      <a href="driver-pwa/index.html" class="landing-card teal">
+        <div class="landing-card__icon">📱</div>
+        <div class="landing-card__tag">Mobile PWA</div>
+        <div class="landing-card__title">Driver Interface</div>
+        <div class="landing-card__desc">Mobile-first driver PWA. Select a unit, receive assignments, follow step-by-step response workflow, and get AI guidance per incident.</div>
+        <div class="landing-card__arrow">Launch →</div>
+      </a>
+    </div>
+
+    <div class="landing-footer">
+      ⚠️ <strong>SIMULATION ONLY</strong> — AP3X is a training and demonstration platform.
+      This is not a real emergency response system. No operational authority. No real emergency instructions.
+      For educational and showcase purposes only.
+    </div>
+  </div>
+</body>
+</html>
