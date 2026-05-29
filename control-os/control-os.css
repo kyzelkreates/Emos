@@ -1,0 +1,86 @@
+/* AP3X Control OS — Additional Styles */
+
+/* ── THREE-COLUMN COMMAND LAYOUT ─────────────── */
+.ap3x-command-layout {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  grid-template-rows: auto 1fr;
+  gap: var(--sp-md);
+  flex: 1;
+  overflow: hidden;
+  min-height: 0;
+}
+
+.ap3x-command-left {
+  display: flex; flex-direction: column; gap: var(--sp-md);
+  overflow: hidden; min-height: 0;
+}
+
+.ap3x-command-right {
+  display: flex; flex-direction: column; gap: var(--sp-md);
+  overflow: hidden; min-height: 0;
+}
+
+/* ── PANEL FIXED HEIGHTS ─────────────────────── */
+.ap3x-incidents-panel { flex: 1; min-height: 0; display: flex; flex-direction: column; }
+.ap3x-incidents-panel .ap3x-panel__body { flex: 1; overflow-y: auto; padding: 0; }
+
+.ap3x-drivers-panel { height: 220px; display: flex; flex-direction: column; flex-shrink: 0; }
+.ap3x-drivers-panel .ap3x-panel__body { flex: 1; overflow-y: auto; }
+
+.ap3x-ai-panel { flex: 1; min-height: 0; display: flex; flex-direction: column; }
+.ap3x-ai-panel .ap3x-panel__body { flex: 1; overflow-y: auto; }
+
+.ap3x-events-panel { flex: 1; min-height: 0; display: flex; flex-direction: column; }
+.ap3x-events-panel .ap3x-panel__body { flex: 1; overflow-y: auto; padding: var(--sp-sm); }
+
+/* ── TIMELINE REPLAY ─────────────────────────── */
+.ap3x-timeline-panel { height: 180px; display: flex; flex-direction: column; flex-shrink: 0; }
+.ap3x-timeline-panel .ap3x-panel__body { flex: 1; overflow-y: auto; }
+
+/* ── DRIVER GRID ─────────────────────────────── */
+.ap3x-drivers-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  padding: 0;
+}
+
+/* ── STATUS BANNER ───────────────────────────── */
+.ap3x-status-banner {
+  display: flex; align-items: center; gap: var(--sp-sm);
+  padding: 6px var(--sp-md);
+  background: rgba(239,68,68,0.08);
+  border: 1px solid rgba(239,68,68,0.25);
+  border-radius: var(--r-md);
+  font-size: 0.72rem; color: var(--ap3x-red);
+  animation: ap3x-pulse-red 2s infinite;
+  font-weight: 600;
+  display: none;
+}
+.ap3x-status-banner.visible { display: flex; }
+.ap3x-status-banner__dot { width: 6px; height: 6px; border-radius: 50%; background: var(--ap3x-red); animation: ap3x-blink 0.6s infinite; }
+
+/* ── TICK COUNTER ────────────────────────────── */
+.ap3x-tick {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--ap3x-text-muted);
+}
+
+/* ── STANDBY OVERLAY ─────────────────────────── */
+.ap3x-standby {
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: center; gap: var(--sp-lg);
+  flex: 1; text-align: center;
+  color: var(--ap3x-text-muted);
+}
+.ap3x-standby__icon { font-size: 3rem; opacity: 0.3; }
+.ap3x-standby__title { font-size: 1.1rem; font-weight: 700; color: var(--ap3x-text-sub); text-transform: uppercase; letter-spacing: 0.1em; }
+.ap3x-standby__sub   { font-size: 0.8rem; }
+
+@media (max-width: 1100px) {
+  .ap3x-command-layout { grid-template-columns: 1fr; }
+  .ap3x-command-right { flex-direction: row; height: 300px; }
+  .ap3x-ai-panel, .ap3x-events-panel { flex: 1; }
+}
