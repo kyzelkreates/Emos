@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="description" content="AP3X Emergency Response Driver Interface — Simulation Only" />
+  <meta name="theme-color" content="#080c12" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="AP3X Driver" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+
+  <link rel="manifest" href="pwa-manifest.json" />
+  <link rel="stylesheet" href="../shared/ap3x.css" />
+  <link rel="stylesheet" href="driver-pwa.css" />
+
+  <!-- SIMULATION ONLY — Not a real emergency response tool -->
+  <title>AP3X — Driver Interface</title>
+</head>
+<body>
+  <div id="ap3x-driver-root"></div>
+
+  <script type="module">
+    import { mountDriverPWA } from "./driver-pwa.js";
+    mountDriverPWA(document.getElementById("ap3x-driver-root"));
+
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker
+        .register("./sw.js", { scope: "/driver-pwa/" })
+        .then(() => console.log("[AP3X Driver] SW registered"))
+        .catch(err => console.warn("[AP3X Driver] SW failed:", err));
+    }
+  </script>
+</body>
+</html>
